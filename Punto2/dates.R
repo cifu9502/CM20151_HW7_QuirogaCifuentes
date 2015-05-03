@@ -1,5 +1,5 @@
 library('lubridate')
-destfile <- "times.csv"
+destfile <- "times3.csv"
 dates <- read.csv(destfile, stringsAsFactors = FALSE)
 date <- as.POSIXct(dates[,2], tz = "GMT")
 options(digits = 12)
