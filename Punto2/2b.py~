@@ -67,6 +67,9 @@ texttan = infile3.readlines()
 
 # <codecell>
 
+fh = open('bestmodels.txt', 'w')
+
+#Se itera sobre los 100 puntos y se grafica la recta correspondiente
 for k in range(1,len(textlin)):
     lin1 = textlin[k].split('\t')
     exp1 = textexp[k].split('\t')
@@ -90,6 +93,7 @@ for k in range(1,len(textlin)):
             plt.ylabel('B')
             plt.xlabel('t')
             plt.savefig('Lineal ('+repr(lin1[0])+','+repr(lin1[1])+'png')
+            fh.write(repr(lin1[0])+ ','+ repr(lin1[1]) + '\t' +'Lineal' +'\t'+repr(lin1[2])+'\t'+repr(lin1[3]) + '\n')
                 
     elif((lin1[-1] >= exp1[-1])& (exp1[-1]<= tan1[-1]) ):
             plt.clf()
@@ -98,6 +102,7 @@ for k in range(1,len(textlin)):
             plt.ylabel('B')
             plt.xlabel('t')
             plt.savefig('Exponencial ('+repr(lin1[0])+','+repr(lin1[1])+'png')
+            fh.write(repr(lin1[0])+ ','+ repr(lin1[1]) + '\t' +'Exponencial' +'\t'+repr(exp1[2])+'\t'+repr(exp1[3])+ '\t'+repr(exp1[4])+ '\t'+repr(exp1[5]) + '\n')
     else:
             plt.clf()
             plt.plot(tiempos,data[1:,lin1[0],lin1[1]],'b' , tiempos, tan(tiempos, tan1[2], tan1[3],tan1[4],tan1[5],tan1[6]),'r'  )
@@ -105,32 +110,11 @@ for k in range(1,len(textlin)):
             plt.ylabel('B')
             plt.xlabel('t')
             plt.savefig('Tangente ('+repr(lin1[0])+','+repr(lin1[1])+'png')
-          
+            fh.write(repr(lin1[0])+ ','+ repr(lin1[1]) + '\t' +'Exponencial' +'\t'+repr(tan1[2])+'\t'+repr(tan1[3])+ '\t'+repr(tan1[4])+ '\t'+repr(tan1[5])+ repr(tan1[6]) + '\n')
+
+fh.close()              
           
 
 # <codecell>
 
-\n,
-          if((lin11] <= exp11])& (lin11]<= tan11]) ):\n,
-              plclf()\n,
-              plplot(tiempos,data[1:,lin1[0],lin1[1]],'b' , tiempos, lin(tiempos, lin1[2], lin1[3]),'r'  )\n,
-              pltitle('Lineal ('+repr(lin1[0])+','+repr(lin1[1])+')')\n,
-              plylabel('B')\n,
-              plxlabel('t')\n,
-              plsavefig('Lineal ('+repr(lin1[0])+','+repr(lin1[1])+'png')\n,
-              \n,
-          elif((lin11] >= exp11])& (exp11]<= tan11])):\n,
-              plclf()\n,
-              plplot(tiempos,data[1:,lin1[0],lin1[1]],'b' , tiempos, expo(tiempos, exp1[2], exp1[3],exp1[4],exp1[5]),'r'  )\n,
-              pltitle('Exponencial ('+repr(lin1[0])+','+repr(lin1[1])+')')\n,
-              plylabel('B')\n,
-              plxlabel('t')\n,
-              plsavefig('Exponencial ('+repr(lin1[0])+','+repr(lin1[1])+'png')\n,
-          else:\n,
-              plclf()\n,
-              plplot(tiempos,data[1:,lin1[0],lin1[1]],'b' , tiempos, tan(tiempos, tan1[2], tan1[3],tan1[4],tan1[5],tan1[6]),'r'  )\n,
-              pltitle('Tangente ('+repr(lin1[0])+','+repr(lin1[1])+')')\n,
-              plylabel('B')\n,
-              plxlabel('t')\n,
-              plsavefig('Tangente ('+repr(lin1[0])+','+repr(lin1[1])+'png')\n,
 
