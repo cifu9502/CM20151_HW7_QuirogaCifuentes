@@ -66,6 +66,7 @@ texttan = infile3.readlines()
 
 fh = open('bestmodels.txt', 'w')
 
+fh.write('Punto' + '\t' +'Tipo' +'\t'+'Variables' + '\n')
 #Se itera sobre los 100 puntos y se grafica la recta correspondiente
 for k in range(1,len(textlin)):
     lin1 = textlin[k].split('\t')

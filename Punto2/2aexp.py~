@@ -71,10 +71,7 @@ def lin(x_obs, a, b):
 
 #Se define la funcion exponencial al igual que en el enunciado
 def expo(x_obs, c, d, nu , sigma):
-    if sigma <= 0:
-        result = -10000
-    else:    
-        result = c +  x_obs*d + (1/((sigma*np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
+    result = c +  x_obs*d + (1/(sigma*(np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
     return result
 
 # <codecell>

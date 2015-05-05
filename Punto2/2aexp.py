@@ -187,7 +187,7 @@ hallarMinExp(data[1:,3,3])
 # <codecell>
 
 fh = open('exponencial.dat', 'w')
-fh.write('X'+ '\t'+ 'Y' + '\t' + ' c'+'\t'+' c'+'\t'+ 'nu'+'\t'+'sigma'+'Likelihood' + '\n')
+fh.write('X'+ '\t'+ 'Y' + '\t' + ' c'+'\t'+' d'+'\t'+ 'nu'+'\t'+'sigma'+'\t'+ 'Likelihood' + '\n')
 for i in range(0,10):
     for j in range(0,10):
         bestc, bestd, bestnu, bestsigma, bestl = hallarMinExp(data[1:,i,j])
