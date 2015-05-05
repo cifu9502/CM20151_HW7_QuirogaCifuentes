@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # <nbformat>3.0</nbformat>
 
-# <codecell>
+# <codecell>e
+#Para entender el codigo en general ver makefile el cual ofrece una perspectiva global del codigo
 from __future__ import division 
 import pyfits
 import numpy as np
@@ -70,10 +71,7 @@ def lin(x_obs, a, b):
 
 #Se define la funcion exponencial al igual que en el enunciado
 def expo(x_obs, c, d, nu , sigma):
-    if sigma <= 0:
-        result = -10000
-    else:    
-        result = c +  x_obs*d + (1/((sigma*np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
+    result = c +  x_obs*d + (1/(sigma*(np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
     return result
 
 # <codecell>
@@ -104,7 +102,7 @@ def findExp(y_obs):
     c_walk = np.append(c_walk, np.random.random()*100 -50)
     d_walk = np.append(d_walk, np.random.random()*1 -0.5)
     nu_walk = np.append(nu_walk, np.random.random() + 100)
-    sigma_walk = np.append(sigma_walk, np.random.random()*0.005 )
+    sigma_walk = np.append(sigma_walk, np.random.random()*0.005-0.0025 )
     
     y_init = expo(tiempos, c_walk[0], d_walk[0], nu_walk[0],sigma_walk[0])
     l_walk = np.append(l_walk, likelihood(y_obs, y_init))

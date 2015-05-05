@@ -40,11 +40,8 @@ tiempos = (tiempos-tiempos[0])*525600
 def lin(x_obs, a, b):
     return x_obs*b + a
 
-def expo(x_obs, c, d, nu , sigma):
-    if sigma <= 0:
-        result = -10000
-    else:    
-        result = c +  x_obs*d + (1/((sigma*np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
+def expo(x_obs, c, d, nu , sigma): 
+    result = c +  x_obs*d + (1/(sigma*(np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
     return result
 
 def tan(x_obs, f, g,h,n,t0):

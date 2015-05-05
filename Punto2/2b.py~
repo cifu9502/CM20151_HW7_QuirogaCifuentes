@@ -40,11 +40,8 @@ tiempos = (tiempos-tiempos[0])*525600
 def lin(x_obs, a, b):
     return x_obs*b + a
 
-def expo(x_obs, c, d, nu , sigma):
-    if sigma <= 0:
-        result = -10000
-    else:    
-        result = c +  x_obs*d + (1/((sigma*np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
+def expo(x_obs, c, d, nu , sigma): 
+    result = c +  x_obs*d + (1/(sigma*(np.pi)**(0.5)))*np.exp(-((x_obs -nu)/sigma)**2 /2)
     return result
 
 def tan(x_obs, f, g,h,n,t0):
@@ -86,22 +83,22 @@ for k in range(1,len(textlin)):
     lin1[0:2]= map(int, lin1[0:2])
     exp1[0:2]= map(int, exp1[0:2])
     tan1[0:2]= map(int, tan1[0:2])
-    if((lin1[-1] <= exp1[-1])& (lin1[-1]<= tan1[-1]) ):
+    if((lin1[-1] >= exp1[-1])& (lin1[-1] >= tan1[-1]) ):
             plt.clf()
             plt.plot(tiempos,data[1:,lin1[0],lin1[1]],'b' , tiempos, lin(tiempos, lin1[2], lin1[3]),'r'  )
             plt.title('Lineal ('+repr(lin1[0])+','+repr(lin1[1])+')')
             plt.ylabel('B')
             plt.xlabel('t')
-            plt.savefig('Lineal ('+repr(lin1[0])+','+repr(lin1[1])+'png')
+            plt.savefig('Lineal ('+repr(lin1[0])+','+repr(lin1[1])+')')
             fh.write(repr(lin1[0])+ ','+ repr(lin1[1]) + '\t' +'Lineal' +'\t'+repr(lin1[2])+'\t'+repr(lin1[3]) + '\n')
                 
-    elif((lin1[-1] >= exp1[-1])& (exp1[-1]<= tan1[-1]) ):
+    elif((lin1[-1] <= exp1[-1])& (exp1[-1] >= tan1[-1]) ):
             plt.clf()
             plt.plot(tiempos,data[1:,lin1[0],lin1[1]],'b' , tiempos, expo(tiempos, exp1[2], exp1[3],exp1[4],exp1[5]),'r'  )
             plt.title('Exponencial ('+repr(lin1[0])+','+repr(lin1[1])+')')
             plt.ylabel('B')
             plt.xlabel('t')
-            plt.savefig('Exponencial ('+repr(lin1[0])+','+repr(lin1[1])+'png')
+            plt.savefig('Exponencial ('+repr(lin1[0])+','+repr(lin1[1])+')')
             fh.write(repr(lin1[0])+ ','+ repr(lin1[1]) + '\t' +'Exponencial' +'\t'+repr(exp1[2])+'\t'+repr(exp1[3])+ '\t'+repr(exp1[4])+ '\t'+repr(exp1[5]) + '\n')
     else:
             plt.clf()
@@ -109,7 +106,7 @@ for k in range(1,len(textlin)):
             plt.title('Tangente ('+repr(lin1[0])+','+repr(lin1[1])+')')
             plt.ylabel('B')
             plt.xlabel('t')
-            plt.savefig('Tangente ('+repr(lin1[0])+','+repr(lin1[1])+'png')
+            plt.savefig('Tangente ('+repr(lin1[0])+','+repr(lin1[1])+')')
             fh.write(repr(lin1[0])+ ','+ repr(lin1[1]) + '\t' +'Exponencial' +'\t'+repr(tan1[2])+'\t'+repr(tan1[3])+ '\t'+repr(tan1[4])+ '\t'+repr(tan1[5])+ repr(tan1[6]) + '\n')
 
 fh.close()              
