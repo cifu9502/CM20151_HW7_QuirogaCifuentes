@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+#Para entender el codigo comleto de todo el punto 2 lo mejor es leer el makefile que da una vision global de lo que hace 
+#cada parte del programa
+
 # <nbformat>3.0</nbformat>
 
 # <codecell>
@@ -86,9 +88,9 @@ def tan(x_obs, f, g,h,n,t0):
 # <codecell>
 
 #El siguiente codigo realiza el proceso de cadenas de markov para encontrar el mejor ajuste al caso lineal.
-#El codigo usado es parecido al dado como muestra en clase , a excepcion de unas pequeñas modificaciones
+#El codigo usado es parecido al dado como muestra en clase  a excepcion de unas pequenas modificaciones
 
-#input y_obs -- datos del punto a observar
+#input yobs : datos del punto a observar
 def findLin(y_obs):
     a_walk = np.empty((0)) #this is an empty list to keep all the steps
     b_walk = np.empty((0))
@@ -118,7 +120,7 @@ def findLin(y_obs):
             l_walk = np.append(l_walk, l_prime)
             
             #Eliminamos los datos que ya no necesitamos para mejorar la efectividad. Note que en este caso, el likelihood
-            #del anterior es menor que el del siguiente paso por lo que podemos e
+            #del anterior es menor que el del siguiente paso por lo que podemos eliminarlo
             a_walk = np.delete(a_walk, -2)
             b_walk = np.delete(b_walk, -2)
             l_walk = np.delete(l_walk, -2)

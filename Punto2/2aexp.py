@@ -104,17 +104,17 @@ def findExp(y_obs):
     c_walk = np.append(c_walk, np.random.random()*100 -50)
     d_walk = np.append(d_walk, np.random.random()*1 -0.5)
     nu_walk = np.append(nu_walk, np.random.random() + 100)
-    sigma_walk = np.append(sigma_walk, np.random.random() +150)
+    sigma_walk = np.append(sigma_walk, np.random.random()*0.005 )
     
     y_init = expo(tiempos, c_walk[0], d_walk[0], nu_walk[0],sigma_walk[0])
     l_walk = np.append(l_walk, likelihood(y_obs, y_init))
     
     
     for i in range(n_iterations):
-        c_prime = np.random.normal(c_walk[-1], 1) 
+        c_prime = np.random.normal(c_walk[-1], 2) 
         d_prime = np.random.normal(d_walk[-1], 0.1)
-        nu_prime = np.random.normal(nu_walk[-1], 2) 
-        sigma_prime = np.random.normal(sigma_walk[-1], 1)
+        nu_prime = np.random.normal(nu_walk[-1], 3) 
+        sigma_prime = np.random.normal(sigma_walk[-1], 0.002)
     
         y_init =  expo(tiempos, c_walk[-1], d_walk[-1],nu_walk[-1] ,sigma_walk[-1])
         y_prime = expo(tiempos, c_prime, d_prime, nu_prime, sigma_prime)
