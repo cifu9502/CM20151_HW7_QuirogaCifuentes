@@ -22,5 +22,6 @@ tangente.dat: 2atan.py  tiempos.csv
 
 #Lee los archivos creados anteriormente y produce las graficas de los mejores fits al igual que el archivo bestmodels.txt con los mejores modelos
 bestmodels.txt : tiempos.csv 2atan.py 2alin.py 2aexp.py 2b.py 
+#primero quito los .png que halla, si este codigo presenta problemas porque no hay archivos .png eliminar la siguiente linea
 	rm *.png
 	python 2b.py
